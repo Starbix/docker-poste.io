@@ -1,0 +1,11 @@
+--- Auth.pm	2016-08-05 15:42:07.000000000 +0200
++++ Auth.pm.patched	2017-04-29 15:49:39.626772175 +0200
+@@ -79,7 +79,7 @@
+           . " authentication failed for $user"
+           . ($msg ? " - $msg" : '');
+         $session->respond(535, $msg);
+-        $session->log(LOGDEBUG, $msg);    # already logged by $session->respond
++        $session->log(LOGDEBUG, "$msg from $ENV{TCPREMOTEIP}" );    # already logged by $session->respond
+         return DENY;
+     }
+ }
